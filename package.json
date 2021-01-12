@@ -1,0 +1,26 @@
+{
+  "name": "@selfage/observable_array",
+  "version": "0.0.1",
+  "description": "Wrapper around native array to make it observable.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selfage/observable_array.git"
+  },
+  "keywords": [
+    "Observable"
+  ],
+  "author": "Yuxuan Xie <teststaybaka@gmail.com> (http://www.yuxuanxie.com)",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/selfage/observable_array/issues"
+  },
+  "homepage": "https://github.com/selfage/observable_array#readme",
+  "main": "./observable_array.js",
+  "types": "./observable_array.d.ts",
+  "devDependencies": {
+    "@selfage/counter": "^1.0.0",
+    "@selfage/test_base": "^1.0.3",
+    "@selfage/tsconfig": "^1.0.0",
+    "typescript": "^4.1.3"
+  }
+}
