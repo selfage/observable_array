@@ -19,7 +19,7 @@
   "types": "./observable_array.d.ts",
   "devDependencies": {
     "@selfage/counter": "^1.0.0",
-    "@selfage/test_base": "^1.0.3",
+    "@selfage/test_base": "^1.0.5",
     "@selfage/tsconfig": "^1.0.0",
     "typescript": "^4.1.3"
   }
