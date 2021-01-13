@@ -47,8 +47,8 @@ Push and pop works the same way as native array.
 let arr = new ObservableArray<string>();
 arr.onElementChange = (index, newValue, oldValue) => {
   console.log(
-		`On index ${index}, newValue is ${newValue} and oldValue is ${oldValue}.`
-	);
+    `On index ${index}, newValue is ${newValue} and oldValue is ${oldValue}.`
+  );
 };
 arr.push('one');
 // Print: On index 0, newValue is one and oldValue is undefined.
@@ -68,8 +68,8 @@ arr.push('one', 'two', 'three');
 arr.get(0); // 'one'
 arr.onElementChange = (index, newValue, oldValue) => {
   console.log(
-		`On index ${index}, newValue is ${newValue} and oldValue is ${oldValue}.`
-	);
+    `On index ${index}, newValue is ${newValue} and oldValue is ${oldValue}.`
+  );
 };
 arr.set(0, 'zero');
 // Print: On index 0, newValue is zero and oldValue is one.
