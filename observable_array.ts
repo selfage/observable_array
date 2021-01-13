@@ -2,8 +2,6 @@ export class ObservableArray<T> implements Iterable<T> {
   public onElementChange: (index: number, newValue: T, oldValue: T) => void;
   private actualArray: T[] = [];
 
-  public constructor() {}
-
   public get(index: number): T {
     return this.actualArray[index];
   }
