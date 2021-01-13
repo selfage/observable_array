@@ -1,6 +1,6 @@
 {
   "name": "@selfage/observable_array",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Wrapper around native array to make it observable.",
   "repository": {
     "type": "git",
