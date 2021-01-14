@@ -6,7 +6,7 @@
 
 ## Overview
 
-Written in TypeScript and compiled to ES5. Provides a wrapper around native
+Written in TypeScript and compiled to ES6. Provides a wrapper around native
 JavaScript array which is capable to listen to changes happened on itself. The
 change event is not bubbled up by the design that observable objects don't care
 about changes happend to its nested objects.
