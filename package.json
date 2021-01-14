@@ -1,6 +1,6 @@
 {
   "name": "@selfage/observable_array",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Wrapper around native array to make it observable.",
   "repository": {
     "type": "git",
@@ -18,9 +18,9 @@
   "main": "./observable_array.js",
   "types": "./observable_array.d.ts",
   "devDependencies": {
-    "@selfage/counter": "^1.0.0",
-    "@selfage/test_base": "^1.0.5",
-    "@selfage/tsconfig": "^1.0.0",
+    "@selfage/counter": "^1.0.1",
+    "@selfage/test_base": "^1.0.6",
+    "@selfage/tsconfig": "^1.0.1",
     "typescript": "^4.1.3"
   }
 }
