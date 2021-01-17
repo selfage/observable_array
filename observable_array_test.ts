@@ -86,6 +86,13 @@ TEST_RUNNER.run({
         assertThat(arr, eqObservableArray([eq(1), eq(200)]), "arr");
         assertThat(counter.get("onElementChange"), eq(1), "elementChangeCount");
 
+        // Execute
+        arr.set(0, 1);
+
+        // Verify
+        assertThat(arr, eqObservableArray([eq(1), eq(200)]), "arr");
+        assertThat(counter.get("onElementChange"), eq(1), "elementChangeCount");
+
         // Prepare
         arr.onElementChange = (index, newValue, oldValue) => {
           counter.increment("onElementChange");

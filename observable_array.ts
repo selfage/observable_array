@@ -8,6 +8,9 @@ export class ObservableArray<T> implements Iterable<T> {
 
   public set(index: number, newValue: T): void {
     let oldValue = this.actualArray[index];
+    if (newValue === oldValue) {
+      return;
+    }
     this.actualArray[index] = newValue;
     if (this.onElementChange) {
       this.onElementChange(index, newValue, oldValue);
