@@ -1,18 +1,8 @@
 import { ObservableArray } from "./observable_array";
+import { eqObservableArray } from "./test_matcher";
 import { Counter } from "@selfage/counter";
-import { MatchFn, assertThat, eq } from "@selfage/test_base/matcher";
+import { assertThat, eq } from "@selfage/test_base/matcher";
 import { TEST_RUNNER } from "@selfage/test_base/runner";
-
-export function eqObservableArray<T>(
-  expected: Array<MatchFn<T>>
-): MatchFn<ObservableArray<T>> {
-  return (actual) => {
-    assertThat(actual.length, eq(expected.length), `array length`);
-    for (let i = 0; i < actual.length; i++) {
-      assertThat(actual.get(i), expected[i], `${i}th element`);
-    }
-  };
-}
 
 TEST_RUNNER.run({
   name: "ObservableArrayTest",

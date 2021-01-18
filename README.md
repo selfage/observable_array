@@ -88,3 +88,17 @@ arr.indexOf('two'); // 1
 JSON.stringify(arr); // ['one','two','three']
 for (let value of arr) {} // Loops as usual.
 ```
+
+## Test matcher
+
+Provides an implementation of test matcher to be used with `@selfage/test_base`.
+
+```TypeScript
+import { ObservableArray } from '@selfage/observable_array';
+import { eqObservableArray } from '@selfage/observable_array/test_matcher';
+import { assertThat, eq } from '@selfage/test_base/matcher'; // Install `@selfage/test_base`.
+
+let ob = new ObservableArray<number>();
+ob.push(10, 11, 12, 13, 14);
+assertThat(ob, eqObservableArray([eq(10), eq(11), eq(12), eq(13), eq(14)]), `ob`);
+```
