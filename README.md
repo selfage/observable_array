@@ -81,8 +81,7 @@ The rest of public methods simply mimic the methods from native array, though
 we don't mimic all of them.
 
 ```TypeScript
-let arr = new ObservableArray<string>();
-arr.push('one', 'two', 'three');
+let arr = ObservableArray.of('one', 'two', 'three');
 arr.length; // 3
 arr.indexOf('two'); // 1
 JSON.stringify(arr); // ['one','two','three']

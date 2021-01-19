@@ -107,8 +107,7 @@ TEST_RUNNER.run({
       name: "PopElements",
       execute: () => {
         // Prepare
-        let arr = new ObservableArray<number>();
-        arr.push(100, 200);
+        let arr = ObservableArray.of(100, 200);
         let counter = new Counter<string>();
         arr.onElementChange = (index, newValue, oldValue) => {
           counter.increment("onElementChange");
