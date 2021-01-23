@@ -90,12 +90,12 @@ for (let value of arr) {} // Loops as usual.
 
 ## Test matcher
 
-Provides an implementation of test matcher to be used with `@selfage/test_base`.
+Provides an implementation of test matcher to be used with `@selfage/test_matcher`.
 
 ```TypeScript
 import { ObservableArray } from '@selfage/observable_array';
 import { eqObservableArray } from '@selfage/observable_array/test_matcher';
-import { assertThat, eq } from '@selfage/test_base/matcher'; // Install `@selfage/test_base`.
+import { assertThat, eq } from '@selfage/test_matcher'; // Install `@selfage/test_matcher`.
 
 let ob = new ObservableArray<number>();
 ob.push(10, 11, 12, 13, 14);
