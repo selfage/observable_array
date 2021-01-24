@@ -59,7 +59,7 @@ arr.pop();
 ## Getter and setter
 
 Unlike native array, `arr[0]` cannot be used to get or set a value. Instead,
-you have to set get and set methods, due to an unfortunate fact that
+you have to use get and set methods, due to an unfortunate fact that
 TypeScript/JavaScript cannot override `[]` operator.
 
 ```TypeScript
