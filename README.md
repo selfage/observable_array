@@ -6,13 +6,11 @@
 
 ## Overview
 
-Written in TypeScript and compiled to ES6. Provides a wrapper around native
-JavaScript array which is capable to listen to changes on itself.
+Written in TypeScript and compiled to ES6 with inline source map & source. See [@selfage/tsconfig](https://www.npmjs.com/package/@selfage/tsconfig) for full compiler options. Provides a wrapper around native JavaScript array which is capable to listen to changes on itself.
 
 Note that if the array is consisted of objects, changes on those objects will not be captured. Refer to [@selfage/message#generate-observable-message](https://github.com/selfage/message#generate-observable-message) for a solution to make them observable.
 
-Public methods might not mimic all methods from native array. Anyone is welcome
-to contribute.
+Public methods might not mimic all methods from native array yet. Anyone is welcome to contribute.
 
 ## Constructor
 
