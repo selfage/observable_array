@@ -6,7 +6,7 @@
 
 ## Overview
 
-Written in TypeScript and compiled to ES6 with inline source map & source. See [@selfage/tsconfig](https://www.npmjs.com/package/@selfage/tsconfig) for full compiler options. Provides a wrapper around native JavaScript array which is capable to listen to changes on itself.
+Written in TypeScript and compiled to ES6 with inline source map & source. See [@selfage/tsconfig](https://www.npmjs.com/package/@selfage/tsconfig) for full compiler options. Provides a type-safe wrapper around native JavaScript array which is capable to listen to changes.
 
 Note that if the array is consisted of objects, changes on those objects will not be captured. Refer to [@selfage/message#generate-observable-message](https://github.com/selfage/message#generate-observable-message) for a solution to make them observable.
 
@@ -99,3 +99,7 @@ let ob = new ObservableArray<number>();
 ob.push(10, 11, 12, 13, 14);
 assertThat(ob, eqObservableArray([eq(10), eq(11), eq(12), eq(13), eq(14)]), `ob`);
 ```
+
+## Design considerations
+
+Refer to [@selfage/message##design-considerations-for-observable-message](https://github.com/selfage/message#design-considerations-for-observable-message) as why we didn't bubble up changes and one listener function.
