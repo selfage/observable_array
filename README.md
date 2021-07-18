@@ -24,17 +24,17 @@ let arr = new ObservableArray<string>();
 
 ## Listen to changes
 
-A hook is exposed for you to listen to any change happend on the array, which
-is being called only when the old value `!==` the new value on that index.
-Therefore it supports primitive types as well as objects.
+Events are emitted by Nodejs's `EventEmitter`. If used in browser, a pollyfill is required.
+
+There is only one event `element` to be emitted whenever the old value `!==` the new value on that index. Therefore it supports primitive types as well as objects.
 
 ```TypeScript
 let arr = new ObservableArray<string>();
-arr.onElementChange = (index, newValue, oldValue) => {
+arr.on('element', (index, newValue, oldValue) => {
   // index: number
   // newValue: T
   // oldvalue: T
-};
+});
 ```
 
 ## Push and pop
@@ -43,11 +43,11 @@ Push and pop works the same way as native array.
 
 ```TypeScript
 let arr = new ObservableArray<string>();
-arr.onElementChange = (index, newValue, oldValue) => {
+arr.on('element', (index, newValue, oldValue) => {
   console.log(
     `On index ${index}, newValue is ${newValue} and oldValue is ${oldValue}.`
   );
-};
+});
 arr.push('one');
 // Print: On index 0, newValue is one and oldValue is undefined.
 arr.pop();
@@ -64,11 +64,11 @@ TypeScript/JavaScript cannot override `[]` operator.
 let arr = new ObservableArray<string>();
 arr.push('one', 'two', 'three');
 arr.get(0); // 'one'
-arr.onElementChange = (index, newValue, oldValue) => {
+arr.on('element', (index, newValue, oldValue) => {
   console.log(
     `On index ${index}, newValue is ${newValue} and oldValue is ${oldValue}.`
   );
-};
+});
 arr.set(0, 'zero');
 // Print: On index 0, newValue is zero and oldValue is one.
 ```
@@ -102,4 +102,4 @@ assertThat(ob, eqObservableArray([eq(10), eq(11), eq(12), eq(13), eq(14)]), `ob`
 
 ## Design considerations
 
-Refer to [@selfage/message##design-considerations-for-observable-message](https://github.com/selfage/message#design-considerations-for-observable-message) as why we didn't bubble up changes and one listener function.
+Refer to [@selfage/message##design-considerations-for-observable-message](https://github.com/selfage/message#design-considerations-for-observable-message) as why we didn't bubble up changes.
