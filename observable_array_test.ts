@@ -13,38 +13,34 @@ TEST_RUNNER.run({
         // Prepare
         let arr = new ObservableArray<number>();
         let counter = new Counter<string>();
-        arr.onElementChange = (index, newValue, oldValue) => {
-          counter.increment("onElementChange");
+        arr.once("element", (index, newValue, oldValue) => {
+          counter.increment("onElement");
           assertThat(index, eq(0), "index");
           assertThat(newValue, eq(100), "newValue");
           assertThat(oldValue, eq(undefined), "oldValue");
-        };
+        });
 
         // Execute
         arr.push(100);
 
         // Verify
         assertThat(arr, eqObservableArray([eq(100)]), "arr");
-        assertThat(counter.get("onElementChange"), eq(1), "elementChangeCount");
+        assertThat(counter.get("onElement"), eq(1), "1st onElement called");
 
         // Prepare
-        arr.onElementChange = (index, newValue, oldValue) => {
-          counter.increment("onElementChange");
+        arr.once("element", (index, newValue, oldValue) => {
+          counter.increment("onElement");
           assertThat(index, eq(1), "index");
           assertThat(newValue, eq(200), "newValue");
           assertThat(oldValue, eq(undefined), "oldValue");
-        };
+        });
 
         // Execute
         arr.push(200);
 
         // Verify
         assertThat(arr, eqObservableArray([eq(100), eq(200)]), "2nd arr");
-        assertThat(
-          counter.get("onElementChange"),
-          eq(2),
-          "2nd elementChangeCount"
-        );
+        assertThat(counter.get("onElement"), eq(2), "2nd onElement called");
 
         // Execute
         let i = 0;
@@ -62,44 +58,44 @@ TEST_RUNNER.run({
         let arr = new ObservableArray<number>();
         arr.push(100, 200);
         let counter = new Counter<string>();
-        arr.onElementChange = (index, newValue, oldValue) => {
-          counter.increment("onElementChange");
+        arr.once("element", (index, newValue, oldValue) => {
+          counter.increment("onElement");
           assertThat(index, eq(0), "index");
           assertThat(newValue, eq(1), "newValue");
           assertThat(oldValue, eq(100), "oldValue");
-        };
+        });
 
         // Execute
         arr.set(0, 1);
 
         // Verify
         assertThat(arr, eqObservableArray([eq(1), eq(200)]), "arr");
-        assertThat(counter.get("onElementChange"), eq(1), "elementChangeCount");
-
-        // Execute
-        arr.set(0, 1);
-
-        // Verify
-        assertThat(arr, eqObservableArray([eq(1), eq(200)]), "arr");
-        assertThat(counter.get("onElementChange"), eq(1), "elementChangeCount");
+        assertThat(counter.get("onElement"), eq(1), "1st onElement called");
 
         // Prepare
-        arr.onElementChange = (index, newValue, oldValue) => {
-          counter.increment("onElementChange");
+        arr.on("element", (index, newValue, oldValue) => {
+          counter.increment("onElement");
           assertThat(index, eq(1), "index");
           assertThat(newValue, eq(2), "newValue");
           assertThat(oldValue, eq(200), "oldValue");
-        };
+        });
 
         // Execute
         arr.set(1, 2);
 
         // Verify
         assertThat(arr, eqObservableArray([eq(1), eq(2)]), "2nd arr");
+        assertThat(counter.get("onElement"), eq(2), "2nd onElement called");
+
+        // Execute
+        arr.set(1, 2);
+
+        // Verify
+        assertThat(arr, eqObservableArray([eq(1), eq(2)]), "still 2nd arr");
         assertThat(
-          counter.get("onElementChange"),
+          counter.get("onElement"),
           eq(2),
-          "2nd elementChangeCount"
+          "still 2nd onElement called"
         );
       },
     },
@@ -109,12 +105,12 @@ TEST_RUNNER.run({
         // Prepare
         let arr = ObservableArray.of(100, 200);
         let counter = new Counter<string>();
-        arr.onElementChange = (index, newValue, oldValue) => {
-          counter.increment("onElementChange");
+        arr.once("element", (index, newValue, oldValue) => {
+          counter.increment("onElement");
           assertThat(index, eq(1), "index");
           assertThat(newValue, eq(undefined), "newValue");
           assertThat(oldValue, eq(200), "oldValue");
-        };
+        });
 
         // Execute
         let value = arr.pop();
@@ -122,15 +118,15 @@ TEST_RUNNER.run({
         // Verify
         assertThat(arr, eqObservableArray([eq(100)]), "arr");
         assertThat(value, eq(200), "value");
-        assertThat(counter.get("onElementChange"), eq(1), "elementChangeCount");
+        assertThat(counter.get("onElement"), eq(1), "1st onElement called");
 
         // Prepare
-        arr.onElementChange = (index, newValue, oldValue) => {
-          counter.increment("onElementChange");
+        arr.once("element", (index, newValue, oldValue) => {
+          counter.increment("onElement");
           assertThat(index, eq(0), "index");
           assertThat(newValue, eq(undefined), "newValue");
           assertThat(oldValue, eq(100), "oldValue");
-        };
+        });
 
         // Execute
         value = arr.pop();
@@ -138,11 +134,7 @@ TEST_RUNNER.run({
         // Verify
         assertThat(arr, eqObservableArray([]), "2nd arr");
         assertThat(value, eq(100), "2nd value");
-        assertThat(
-          counter.get("onElementChange"),
-          eq(2),
-          "2nd elementChangeCount"
-        );
+        assertThat(counter.get("onElement"), eq(2), "2nd onElement called");
       },
     },
     {

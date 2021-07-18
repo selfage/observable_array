@@ -1,5 +1,14 @@
-export class ObservableArray<T> implements Iterable<T> {
-  public onElementChange: (index: number, newValue: T, oldValue: T) => void;
+import EventEmitter = require("events");
+
+export interface ObservableArray<T> {
+  on(
+    event: "element",
+    listener: (index: number, newValue: T, oldValue: T) => void
+  ): this;
+  on(event: string, listener: Function): this;
+}
+
+export class ObservableArray<T> extends EventEmitter implements Iterable<T> {
   private actualArray: T[] = [];
 
   public static of<T>(...values: Array<T>): ObservableArray<T> {
@@ -18,27 +27,21 @@ export class ObservableArray<T> implements Iterable<T> {
       return;
     }
     this.actualArray[index] = newValue;
-    if (this.onElementChange) {
-      this.onElementChange(index, newValue, oldValue);
-    }
+    this.emit("element", index, newValue, oldValue);
   }
 
   public push(...newValues: Array<T>): void {
     for (let newValue of newValues) {
       this.actualArray.push(newValue);
       let index = this.actualArray.length - 1;
-      if (this.onElementChange) {
-        this.onElementChange(index, newValue, undefined);
-      }
+      this.emit("element", index, newValue, undefined);
     }
   }
 
   public pop(): T {
     let oldValue = this.actualArray.pop();
     let index = this.actualArray.length;
-    if (this.onElementChange) {
-      this.onElementChange(index, undefined, oldValue);
-    }
+    this.emit("element", index, undefined, oldValue);
     return oldValue;
   }
 
